@@ -1,16 +1,21 @@
 // We are importing test and expect from playwright package
-import {test, expect} from '@playwright/test';
+import {expect,chromium, test} from '@playwright/test';
 
-test("First test case", () => {
+test("First test case", async() => {
 
-})
+    // Creating your browser
+    let browser = await chromium.launch({headless: false});
 
+    // browswer context
+    let browserContext = await browser.newContext();
 
-test("Second test case", () => {
+    // creating a page
+    let page = await browserContext.newPage();
 
-})
+    await page.goto("https://playwright.dev/");
 
+    console.log(await page.title());
 
-test("Third test case", () => {
+    await page.close();
 
 })
