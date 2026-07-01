@@ -9,6 +9,7 @@ test("HandlingMethods", async({page}) => {
 
     await page.getByLabel('Password', {exact:true}).fill('Laxman')
     await page.getByLabel('Password', {exact:true}).clear()
+    console.log(await page.getByLabel('Password', {exact:true}).inputValue())
 
 
     await page.getByLabel('Password', {exact:true}).fill('Laxman')
@@ -17,6 +18,7 @@ test("HandlingMethods", async({page}) => {
 
     let allcheckBoxes = page.getByRole('checkbox')
     let allcheckboxesCount = await allcheckBoxes.count()
+    console.log(allcheckBoxes)
     console.log(allcheckboxesCount)
     
     await allcheckBoxes.first().check();
@@ -30,6 +32,19 @@ test("HandlingMethods", async({page}) => {
         await allcheckBoxes.nth(i).check();
     }
 
+    let allRadioButton = page.getByRole('radio')
+    let allRadioButtonCount = await allRadioButton.count()
+    console.log(allRadioButton)
+    console.log(allRadioButtonCount)
+    
+
+    for (let i=0; i<allRadioButtonCount; i++)
+    {
+        await allRadioButton.nth(i).click();
+    }
+
+
+
     // click using keyboard
     //focus()
     //press('Enter')
@@ -38,6 +53,9 @@ test("HandlingMethods", async({page}) => {
     //toBeVisible
     //toBeEnabled
     //toBeDisabled
+
+
+
 
 
 
