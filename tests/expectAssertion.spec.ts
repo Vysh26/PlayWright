@@ -75,11 +75,44 @@ test('expectAssertion', async({page}) =>{
     expect ("Rama is good").toContain("good");
 
     //API assertions
-    //Negative Assertions
+    //Negative Assertions 
+    //await expect(locator).not.method();
+    await expect(page.locator('.spinner')).not.toBeVisible();
+    await expect(page.locator("//li[text()='Selenium']")).toBeVisible();
+    await expect(page.locator("//li[text()='Python']")).not.toBeVisible();
+    await expect(page.locator('.error')).not.toBeVisible();
+    //not attached
+    await expect(page.locator('.error')).toHaveCount(0);
+    await expect(page.locator('.error')).not.toBeAttached();
+    await expect(page.locator("//label[contains(text(), 'favorite')]").first()).not.toHaveText('India');
+    //await expect(page.locator('#submit-btn')).not.toBeEnabled();
+    //not.toBeChecked()
+    //not.toBeEditable()
+    //not.toBeFocused()
 
-    //Hard Assertions
+    // Doing negative assrtion in page locators
+    await expect(page).not.toHaveTitle('form-fields');
+    expect(12).not.toEqual(15);
+    expect.soft(12).not.toEqual(15);
+
+
+    //API assertions
+    //await expect(page).not.method()
+    //await expect(page).method()
+    //await expect(locator).method()
+    //await expect(locator).not.method()
+
+
+
+    //Hard Assertions 
+    //If assertions fails -> execution is going to stop immediately - used in critical flow
+    //expect(actual).toBe(expected)
+    //expect(page).toHaveTitle('Login')
 
     //Soft Assertions
+    //If assertion fails -> execution won't stop- it will report all your failed assertions 
+    //expect.soft(actual).toBe(expected)
+    //expect.soft(page).toHaveTitle('Login')
 
 
 

@@ -12,11 +12,7 @@ test("HandlingMethods", async({page}) => {
     await page.getByRole('button', {name:'Click Me', exact:true}).hover()
     await page.getByRole('button', {name:'Click Me', exact:true}).first().click({button:'left'})
 
-    await page.getByRole('link', { name: 'Radio Button' }).click();
-    await expect(page).toHaveURL('https://demoqa.com/radio-button');
-    await page.getByRole('radio', {name:'Yes'}).check();
-
-    await page.getByRole('link', { name: 'Radio Button' }).click();
+    await page.getByRole('link', { name: 'Radio Button' }).first().click();
     await expect(page).toHaveURL('https://demoqa.com/radio-button');
     await page.getByRole('radio', {name:'Yes'}).check();
    
