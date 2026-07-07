@@ -1,7 +1,7 @@
 
 import {test,expect, chromium}  from '@playwright/test';
 
-test("First test case",async({page})=>{
+test("First test case @title",async({page})=>{
 
 // let browser =await chromium.launch({
 //     headless: false,

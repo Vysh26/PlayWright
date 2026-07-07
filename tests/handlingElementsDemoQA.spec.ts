@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 
-test("HandlingMethods", async({page}) => {
+test("HandlingElementsDemoQA", async({page}) => {
 
     await page.goto('https://demoQA.com/buttons');
     await page.locator('#doubleClickBtn').hover()
