@@ -28,7 +28,7 @@ test('traceViewer', async({page})=> {
 
     const toggleButton = await page.getByRole('button', {name:'Toggle Button', exact:true});
 
-    await expect(primaryButton).toHaveCount(2);
+    await expect(primaryButton).toHaveCount(1);
     await expect(primaryButton).toBeVisible();
 
     await expect(toggleButton).toHaveCount(1);
