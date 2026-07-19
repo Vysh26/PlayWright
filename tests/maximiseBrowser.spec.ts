@@ -24,11 +24,4 @@ console.log("testing");
 
 })
 
-// test("second test case",()=>{
-
-// })
-
-// test("Third test case",()=>{
-
-// })
 
