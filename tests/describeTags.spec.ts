@@ -9,7 +9,7 @@ test.slow => triple your default timeout 30sec => 90sec
 .only - to run only certain group of tests
 .skip - to skip those tests
 */
-test.describe.only('login Group test cases', () => {
+test.describe('login Group test cases', () => {
 
 test ('test script 1', ({page}) => {
     console.log('login test script 1')
