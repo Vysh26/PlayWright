@@ -1,22 +1,11 @@
-// import { test } from '@playwright/test';
-// import fs from 'node:fs';
-// import path from 'node:path';
-// import { fileURLToPath } from 'node:url';
+import { test } from '@playwright/test';
+import fs from 'fs';
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
+test('Read JSON using fs', async () => {
 
-// test('Read JSON using fs', async () => {
-//   const filePath = path.join(__dirname, '../testdata/testData.json');
+    const data = fs.readFileSync('testdata/testData.json', 'utf-8');
+    const json = JSON.parse(data);
 
-//   const data = fs.readFileSync(filePath, 'utf-8');
-//   const json = JSON.parse(data);
-
-//   console.log(json.username);
-// });
-
-import { test, expect } from '@playwright/test';
-
-test('simple', async () => {
-  expect(1 + 1).toBe(2);
+    console.log(json.productName);
+    console.log(json.price);
 });
