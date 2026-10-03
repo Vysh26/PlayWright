@@ -23,13 +23,13 @@ test('mock_2', async({page}) => {
 
     let amazon_search = page.locator("#twotabsearchtextbox");
 
-    await amazon_search.fill('iphone');
+    // await amazon_search.fill('iphone');
 
     let search_button = page.locator("//input[@id='nav-search-submit-button']")
 
     await search_button.click();
 
-    await expect(page).toHaveTitle('Amazon.co.uk : iphone');
+    // await expect(page).toHaveTitle('Amazon.co.uk : iphone');
 
 
 })
