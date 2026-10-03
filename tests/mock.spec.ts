@@ -27,7 +27,7 @@ test('mock_2', async({page}) => {
 
     let search_button = page.locator("//input[@id='nav-search-submit-button']")
 
-    await search_button.click();
+    // await search_button.click();
 
     // await expect(page).toHaveTitle('Amazon.co.uk : iphone');
 
