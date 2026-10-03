@@ -22,20 +22,24 @@ test('@interview xumo activation page', async({page}) => {
 
     await expect(codeInput).toBeFocused();
 
-    await expect(errorCode).toBeVisible({visible: false})
+    await expect(errorCode).toBeVisible({visible: false});
 
-    await expect(continueButton).toBeVisible({visible: true})
+    await expect(continueButton).toBeVisible({visible: true});
 
-    codeInput.fill("123456")
+    codeInput.fill("123456");
 
-    await expect(codeCheckBox).toBeChecked({checked: false})
+    await expect(codeCheckBox).toBeChecked({checked: false});
 
-    codeCheckBox.check()
+    codeCheckBox.check();
 
-    await expect(codeCheckBox).toBeChecked({checked: true})
+    await expect(codeCheckBox).toBeChecked({checked: true});
     
-    await continueButton.click()
+    await continueButton.click();
 
-    await expect(errorCode).toBeVisible({visible: true})
+    console.log(await (errorCode).textContent());
+
+    expect(await (errorCode).textContent()).toEqual("That code didn't work. Please try again.");
+
+    await expect(errorCode).toBeVisible({visible: true});
 
 })
