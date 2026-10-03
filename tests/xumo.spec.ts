@@ -8,16 +8,34 @@ test('@interview xumo activation page', async({page}) => {
 
     // Handle cookie popup
     await page.getByRole('button', { name: 'Decline All' }).click();
-
     
     // const codeInput = page.getByPlaceholder('Enter your code');
-
     const codeInput = page.getByRole('textbox', { name: 'Code' })
+    const codeCheckBox = page.locator('prism-text.label-text.sc-prism-checkbox')
+    const errorCode = page.locator('prism-text.invalid-text.hint-text')
+    const continueButton = page.getByRole('button', { name: 'Continue' });
+
     
     await expect(codeInput).toBeVisible();
 
     await codeInput.focus();
 
     await expect(codeInput).toBeFocused();
+
+    await expect(errorCode).toBeVisible({visible: false})
+
+    await expect(continueButton).toBeVisible({visible: true})
+
+    codeInput.fill("123456")
+
+    await expect(codeCheckBox).toBeChecked({checked: false})
+
+    codeCheckBox.check()
+
+    await expect(codeCheckBox).toBeChecked({checked: true})
+    
+    await continueButton.click()
+
+    await expect(errorCode).toBeVisible({visible: true})
 
 })
