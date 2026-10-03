@@ -7,9 +7,13 @@ test('@interview xumo activation page', async({page}) => {
     await expect(page.getByRole('heading', {name:"Enter the 6-digit code displayed on your device"})).toBeVisible();
 
     // Handle cookie popup
-    await page.getByRole('button', { name: 'Decline All' }).click();
+    const popUp = page.getByText('Cookie Preferences');
+    if (await popUp.isVisible()) {
+        await page.getByRole('button', { name: 'Decline All' }).click();
+    }
     
-    // const codeInput = page.getByPlaceholder('Enter your code');
+    
+    // const codeInput = page.getByPlaceholder('Enter your code'); --> Brings two occurances
     const codeInput = page.getByRole('textbox', { name: 'Code' })
     const codeCheckBox = page.locator('prism-text.label-text.sc-prism-checkbox')
     const errorCode = page.locator('prism-text.invalid-text.hint-text')
