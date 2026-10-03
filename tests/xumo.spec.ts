@@ -39,6 +39,7 @@ test('@interview xumo activation page', async({page}) => {
     console.log(await (errorCode).textContent());
 
     expect(await (errorCode).textContent()).toEqual("That code didn't work. Please try again.");
+    await expect(errorCode).toContainText("That code didn't work.");
 
     await expect(errorCode).toBeVisible({visible: true});
 
