@@ -1,6 +1,9 @@
 import { test, expect, chromium } from '@playwright/test';
 
-// test('File upload ',async ({page})=>{
+ test('File upload ',async ({page})=>{
+
+    console.log("Upload files test commented out")
+
 
 // // find an element which takes input as file
 
@@ -54,4 +57,4 @@ import { test, expect, chromium } from '@playwright/test';
 //     ])
 
 
-// })
+ })
