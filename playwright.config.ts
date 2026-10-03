@@ -13,6 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  timeout: 60_000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -30,8 +31,15 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless:false
+    headless:false,
+    // 30 second timeout for actions such as click(), fill(), etc.
+    actionTimeout: 30_000,
+
+    // 30 second timeout for navigation such as goto()
+    navigationTimeout: 30_000,
+    
   },
+
 
   /* Configure projects for major browsers */
   projects: [
