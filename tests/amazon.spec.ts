@@ -1,20 +1,5 @@
 import {expect, test} from '@playwright/test';
 
-test('mock_1',async ({page}) => {
-    await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
-
-    await page.getByLabel('Username:').fill('Vyshnavi');
-
-    let value = await page.getByLabel('Username:').inputValue()
-
-    console.log(value);
-
-    expect(value).toBe('Vyshnavi');
-
-
-})
-
-
 test('search iPhone and select lowest priced product', async ({ page }) => {
 
   // 1. Open Amazon
