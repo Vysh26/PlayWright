@@ -29,7 +29,7 @@ test('@Web Client App login', async ({ page }) => {
  
 })
 
-test('@Child windows hadl', async ({browser})=>
+test('@Child windows handle', async ({browser})=>
  {
     const context = await browser.newContext();
     const page =  await context.newPage();
