@@ -1,3 +1,5 @@
-const{test} = require("@playwright/test")
+import {test, expect} from "@playwright/test"
 
-test("Check Hidden", async(page) => {})
+test("Check Hidden", async({page}) => {
+    
+})
