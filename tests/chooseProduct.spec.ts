@@ -117,6 +117,38 @@ test('@Child windows handle', async ({browser})=>
 
  })
 
+ 
+test('@Webst Client App login- intelligent locator', async ({ page }) => {
+   //js file- Login js, DashboardPage
+   const email = "anshika@gmail.com";
+   const productName = 'ZARA COAT 3';
+   const products = page.locator(".card-body");
+   await page.goto("https://rahulshettyacademy.com/client");
+   await page.getByPlaceholder("email@example.com").fill(email);
+   await page.getByPlaceholder("enter your passsword").fill("Iamking@000");
+   await page.getByRole('button',{name:"Login"}).click();
+   await page.waitForLoadState('networkidle');
+   await page.locator(".card-body b").first().waitFor();
+   
+   await page.locator(".card-body").filter({hasText:"ZARA COAT 3"})
+   .getByRole("button",{name:"Add to Cart"}).click();
+ 
+   await page.getByRole("listitem").getByRole('button',{name:"Cart"}).click();
+ 
+   //await page.pause();
+   await page.locator("div li").first().waitFor();
+   await expect(page.getByText("ZARA COAT 3")).toBeVisible();
+ 
+   await page.getByRole("button",{name :"Checkout"}).click();
+ 
+   await page.getByPlaceholder("Select Country").pressSequentially("ind");
+ 
+   await page.getByRole("button",{name :"India"}).nth(1).click();
+   await page.getByText("PLACE ORDER").click();
+ 
+   await expect(page.getByText("Thankyou for the order.")).toBeVisible();
+})
+
 
  
 test('Playwright Special locators', async ({ page }) => {
@@ -133,4 +165,28 @@ test('Playwright Special locators', async ({ page }) => {
  
     //locator(css)
  
+});
+
+
+test('codegen', async ({ page }) => {
+  await page.goto('https://rahulshettyacademy.com/angularpractice/');
+  await page.getByText('Protractor Tutorial by').click();
+  await expect(page.locator('form input[name="name"]')).toBeVisible();
+  await page.locator('form input[name="name"]').click();
+  await page.locator('form input[name="name"]').fill('vysh');
+  await page.locator('input[name="email"]').click();
+  await page.locator('input[name="email"]').fill('vysh@gmail.com');
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).fill('Password 123');
+  await page.getByText('Employment Status:').click();
+  await expect(page.getByText('Employed')).toBeVisible();
+  await page.locator('div').filter({ hasText: 'Employed' }).nth(2).click();
+  await page.getByLabel('Gender').selectOption('Female');
+  await page.getByLabel('Gender').selectOption('Male');
+  await page.locator('input[name="bday"]').fill('2026-10-07');
+  await page.getByRole('heading', { name: 'Two-way Data Binding example' }).getByRole('textbox').click();
+  await page.getByRole('heading', { name: 'Two-way Data Binding example' }).getByRole('textbox').click();
+  await expect(page.getByRole('link', { name: 'Shop' })).toBeVisible();
+  await page.getByRole('link', { name: 'Home' }).click();
+  await page.getByRole('heading', { name: 'Two-way Data Binding example:' }).getByRole('textbox').click();
 });
