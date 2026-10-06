@@ -9,5 +9,7 @@ export const customTest = base.extend<{authenticatedPage: Page;}>({
         await page.waitForLoadState('networkidle');
         await use(page);
     }
+
+
 })
 
