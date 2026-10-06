@@ -1,43 +1,24 @@
-function greet(name: string, callback: () => number) {
+
+export function greet(name: string, callback: (candidate_name: string) => number) {
 
     console.log(`Hey ${name} welcome back`);
 
-    let age: number = callback();
+    console.log(`Let me gues your age`);
 
-    console.log(`I guess your age is ${age}`)
+    let age: number = callback(name);
+
+    console.log(`I guess ${name} age is ${age}`)
+
+}
+
+export function guessAge(candidate_name: string) {
+
+    let age: number =  Math.floor(Math.random() * 10);
     
+    return age;
+
 }
 
-function guessAge(): number {
-    return 3;
-}
 
 
 
-function getUser(): Promise<string> {
-    return new Promise((resolve, reject) => {
-        const success = true;
-
-        if (success) {
-            resolve("Vysh");
-        } else {
-            reject("Couldn't find user");
-        }
-    });
-}
-
-async function main(): Promise<void> {
-
-    try {
-        const userName = await getUser();
-
-        await greet("Vysh", guessAge);
-
-        console.log(`User is: ${userName}`);
-
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-main();
